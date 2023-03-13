@@ -1,6 +1,6 @@
 ---
 title: "Joining Assignment"
-author: "Your Name Here"
+author: "Giovanna Romariz Lino"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:
@@ -126,18 +126,18 @@ inner_join(counties_elexresults, counties_demographics) %>%
   group_by(state_name, winner_2020) %>% 
   summarise(n())
 
-
 ```
 
 7)  Extra credit
 
 Up until now we've joined two tables together. But we actually have three tables in this project. How might we join all three together into a single table, so all the measures for each county are combined in one place? (Hint: you can do this is multiple steps, doesn't have to be one step only.)
 
+
 ```{r}
 
+mergedtables <- inner_join(counties_elexresults, counties_demographics) 
 
-
-
-
+inner_join(mergedtables, counties_rural_urban_suburban, by = NULL, copy = FALSE)
+  
 
 ```
