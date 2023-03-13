@@ -117,8 +117,8 @@ inner_join(counties_elexresults, counties_demographics) %>%
 
 ```
 
-6)  After joining both datasets, I want to find the amount of wins for each party in each state. 
-#This set of codes allows me to compare the amount of democratic vs republican winners in each state and which state had a major republican vs democratic vote. 
+6)  After joining both datasets, I want to find the amount of wins in 2020 for each party in each state. 
+#This set of codes allows me to compare the amount of democratic vs republican winners in each state and which state had a major republican vs democratic victory. 
 
 ```{r}
 
@@ -135,9 +135,11 @@ Up until now we've joined two tables together. But we actually have three tables
 
 ```{r}
 
-mergedtables <- inner_join(counties_elexresults, counties_demographics) 
+mergedtables <- full_join(counties_elexresults, counties_demographics) 
 
-inner_join(mergedtables, counties_rural_urban_suburban, by = NULL, copy = FALSE)
+full_join(mergedtables, counties_rural_urban_suburban, by = NULL, copy = FALSE)
+
+#Here, I have assigned a new name for the two first tables I full joined, and then I full joined again the new assigned merged table to the last data to create all three tavles into a single one, with all the measures for each country combined in one place. 
   
 
 ```
