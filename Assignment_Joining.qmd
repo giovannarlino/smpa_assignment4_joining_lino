@@ -78,6 +78,10 @@ Join together the election results and demographics tables above, and then use t
 
 ```{r}
 
+inner_join(counties_elexresults, counties_demographics) %>% 
+  filter (state_code == "FL") %>% 
+  group_by(pct_ed_college_all_abovebelow_natl) %>% 
+  summarise(average = mean(pct_r_2020))
 
 
 
@@ -93,28 +97,34 @@ Using the joined table you made above:
 
 ```{r}
 
-
+inner_join(counties_elexresults, counties_demographics) %>% 
+  group_by(pct_ed_college_all_abovebelow_natl) %>% 
+  summarise(average = mean(pct_r_2020))
 
 
 ```
 
 Now using the joined datasets above, come up with two groupings you find interesting or newsworthy in a particular state, and replicate the steps above them them instead.
 
-5)  
+5)  By joining both datasets, I am grouping/summarizing to calculate the mean pct of Trump 2020 vote by counties above or below the national average for people who identify as nonwhite.  
 
 ```{r}
 
-
+inner_join(counties_elexresults, counties_demographics) %>% 
+  group_by(pct_race_nonwhite_abovebelow_natl) %>% 
+  summarise(average = mean(pct_r_2020))
 
 
 ```
 
-6)  
+6)  After joining both datasets, I want to find the amount of wins for each party in each state. 
+#This set of codes allows me to compare the amount of democratic vs republican winners in each state and which state had a major republican vs democratic vote. 
 
 ```{r}
 
-
-
+inner_join(counties_elexresults, counties_demographics) %>% 
+  group_by(state_name, winner_2020) %>% 
+  summarise(n())
 
 
 ```
