@@ -41,7 +41,11 @@ Join together the election results and urban/suburban/rural tables above, and th
 
 ```{r}
 
-
+inner_join(counties_elexresults, counties_rural_urban_suburban) %>% 
+  filter (state_code == "VA") %>% 
+  group_by(rural_urban) %>% 
+  summarise(average = mean(pct_r_2020))
+  
 
 
 ```
@@ -56,7 +60,10 @@ Using the joined election results / urban/suburban/rural table created above:
 
 ```{r}
 
-
+inner_join(counties_elexresults, counties_rural_urban_suburban) %>% 
+  filter (state_code == "VA") %>% 
+  group_by(rural_urban, winner_2020) %>% 
+  summarise(n())
 
 
 ```
